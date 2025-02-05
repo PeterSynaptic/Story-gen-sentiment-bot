@@ -5,11 +5,8 @@ import os
 # store api key
 api_key = os.getenv("GOOGLE_API_KEY")
 
-
-
 # Define app tabs
 tab1, tab2 = st.tabs(['Sentiment Analysis', 'Story Generation'])
-
 
 # get api key from user
 with st.sidebar:
@@ -47,7 +44,6 @@ with tab1:
     generation_config=generation_config,
     )
 
-
     chat_session = sentiment_model.start_chat(
     history=[
     {
@@ -77,12 +73,10 @@ with tab1:
         ]
     )
 
-
     generate_sentiment = st.button("Generate Sentiment", key="generate_sentiment")
     if generate_sentiment and prompt:
           response = chat_session.send_message(prompt)
           st.write(response.text)
-
 
 with tab2:
     st.write("Story Generation Bot using Gemini 1.5 Pro")
